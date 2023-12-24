@@ -1,5 +1,5 @@
 # NodeProducts
-Projeto de CRUD de produtos com Typescript e Node
+Projeto de CRUD de produtos com Typescript e Node + EXTRA sincronização com API IBGE ao ser solicitado
 
 
 Tecnologias:
