@@ -8,7 +8,12 @@ export const syncCitiesWithIBGE = async (_req: Request, res: Response): Promise<
     const cities = response.data;
 
     for (const city of cities) {
-      await CityService.insertCity({ id: city.id, name: city.nome });
+      try {
+        await CityService.insertCity({ id: city.id, name: city.nome });
+      } catch (error) {
+        // Se um erro ocorrer durante a inserção devido a um nome já existente, você pode tratá-lo aqui.
+        console.error(`Erro ao inserir cidade ${city.nome}`);
+      }
     }
 
     res.json({ message: 'Cidades sincronizadas com sucesso.' });
