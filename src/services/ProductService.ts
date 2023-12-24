@@ -16,10 +16,15 @@ export const createProduct = async (
   return productRepository.save(product);
 };
 
-export const updateProduct = async (productId: number, productData: Partial<Product>): Promise<Product | undefined> => {
+export const updateProduct = async (
+  productId: number,
+  productData: Partial<Product>
+): Promise<Product | undefined> => {
   try {
-    const existingProduct = await productRepository.findOne({ where: { id: productId } });
-    
+    const existingProduct = await productRepository.findOne({
+      where: { id: productId },
+    });
+
     if (existingProduct) {
       productRepository.merge(existingProduct, productData);
       return productRepository.save(existingProduct);
@@ -38,6 +43,7 @@ export const deleteProduct = async (productId: number): Promise<boolean> => {
     await productRepository.softDelete(productId);
     return true;
   } catch (error) {
+    // Lidar com erros de banco de dados ou outras exceções
     return false;
   }
 };

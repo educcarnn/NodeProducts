@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as ProductService from '../services/ProductService';
 
+// Lista todos os produtos existentes
 export const listProducts = async (req: Request, res: Response): Promise<void> => {
   try {
     const products = await ProductService.getAllProducts();
@@ -10,6 +11,8 @@ export const listProducts = async (req: Request, res: Response): Promise<void> =
   }
 };
 
+
+// Cria produto
 export const createProduct = async (req: Request, res: Response): Promise<void> => {
   const productData = req.body;
 
@@ -21,6 +24,7 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
   }
 };
 
+// Atualiza um produto existente
 export const updateProduct = async (req: Request, res: Response): Promise<void> => {
     const productId = parseInt(req.params.id, 10); 
     const productData = req.body;
@@ -37,8 +41,9 @@ export const updateProduct = async (req: Request, res: Response): Promise<void> 
     }
   };
 
+  // Exclui um produto
   export const deleteProduct = async (req: Request, res: Response): Promise<void> => {
-    const productId = parseInt(req.params.id, 10); // Ou Number(req.params.id)
+    const productId = parseInt(req.params.id, 10); 
   
     try {
       const success = await ProductService.deleteProduct(productId);
