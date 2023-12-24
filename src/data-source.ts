@@ -31,7 +31,7 @@ const dataSourceConfig = (): DataSourceOptions => {
     entities: [entitiesPath],
     migrations: [migrationPath],
     ssl: {
-      rejectUnauthorized: false, // Para desabilitar a verificação do certificado (não recomendado em produção)
+      rejectUnauthorized: false, 
     },
   };
 };
