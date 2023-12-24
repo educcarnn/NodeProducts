@@ -12,3 +12,4 @@ TypeOrm
 Cors
 Express
 Typescript
+Axios
